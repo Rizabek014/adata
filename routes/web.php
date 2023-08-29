@@ -18,7 +18,3 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/calculateExperience', [
-    Controller::class,
-    'calculateExperience',
-])->name('calculateExperience');

@@ -18,3 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::any('/calculateExperience','\App\Http\Controllers\Controller@calculateExperience', [
+    Controller::class,
+    'calculateExperience',
+])->name('calculateExperience');

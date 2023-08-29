@@ -15,7 +15,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function CalculateExperience(CalculateExperienceRequest $request)
+    public function CalculateExperience(Request $request)
     {
         $aggregator = new Aggregator($request);
         $calculateExperienceService = new CalculateExperienceService();
