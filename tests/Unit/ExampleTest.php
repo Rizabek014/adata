@@ -9,19 +9,19 @@ use PHPUnit\Framework\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * A basic test example.
+     * Testing calculateExperienceService with a positive test.
      */
     public function CalculateExperiencePositiveTest(): void
     {
         $dataProvider = [
-            'name' => 'Job1',
+            'name'  => 'Job1',
             'start' => '05.2012',
-            'end' => '08.2015',
+            'end'   => '08.2015',
         ];
 
-        $aggregator = new Aggregator($dataProvider);
+        $aggregator                 = new Aggregator($dataProvider);
         $calculateExperienceService = new CalculateExperienceService();
-        $result = $calculateExperienceService->execute($aggregator->getData());
+        $result                     = $calculateExperienceService->execute($aggregator->getData());
 
         $this->assertEquals(72, $result);
     }
