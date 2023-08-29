@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\Aggregator;
+use App\Service\CalculateExperienceService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -14,13 +16,15 @@ class Controller extends BaseController
 
     public function CalculateExperience(Request $request)
     {
-        $command = [];
+        $aggregator = new Aggregator($request);
+        $calculateExperienceService = new CalculateExperienceService();
+        $result = $calculateExperienceService->execute($aggregator->getData());
 
-        return response()->success(
-            'Данные получены',
+        return response()->json([
+            'Опыт работы',
             [
-                'nbTotal' => 0,
-            ]
+                'Total' => $result,
+            ]]
         );
     }
 }
