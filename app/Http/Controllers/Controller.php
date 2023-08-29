@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CalculateExperienceRequest;
 use App\Service\Aggregator;
 use App\Service\CalculateExperienceService;
 use Illuminate\Http\Request;
@@ -14,14 +15,14 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function CalculateExperience(Request $request)
+    public function CalculateExperience(CalculateExperienceRequest $request)
     {
         $aggregator = new Aggregator($request);
         $calculateExperienceService = new CalculateExperienceService();
         $result = $calculateExperienceService->execute($aggregator->getData());
 
         return response()->json([
-            'Опыт работы',
+            'Job experience',
             [
                 'Total' => $result,
             ]]
